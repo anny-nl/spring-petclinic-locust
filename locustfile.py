@@ -21,4 +21,10 @@ class PetClinicUser(HttpUser):
     @task(10)
     def criar_dono(self):
         novo_dono = {
-            "firstName": f"User{random.randi
+            "firstName": f"User{random.randint(1,10000)}",
+            "lastName": "Test",
+            "address": "Rua X, 123",
+            "city": "Cidade",
+            "telephone": "999999999"
+        }
+        self.client.post("/owners", json=novo_dono)
